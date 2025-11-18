@@ -1,19 +1,13 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	// resolve 已經不需要了，你甚至可以刪除這行 import
-	// import { resolve } from '$app/paths'; 
 
 	export let data: PageData;
 </script>
 
 <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:py-16">
 	<div class="mb-12 border-b border-gray-200 pb-8 text-center">
-		<h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
-			我的技術日誌
-		</h1>
-		<p class="mt-4 text-xl text-gray-500">
-			紀錄學習 Svelte, FastAPI 與 Tailwind CSS 的點滴。
-		</p>
+		<h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">我的技術日誌</h1>
+		<p class="mt-4 text-xl text-gray-500">紀錄學習 Svelte, FastAPI 與 Tailwind CSS 的點滴。</p>
 	</div>
 
 	<div class="flex flex-col gap-10">
@@ -36,7 +30,7 @@
 						</a>
 					</h2>
 
-					<p class="mb-4 text-base text-gray-600 line-clamp-2">
+					<p class="mb-4 line-clamp-2 text-base text-gray-600">
 						{post.metadata.excerpt}
 					</p>
 
@@ -48,9 +42,7 @@
 		{/each}
 
 		{#if data.posts.length === 0}
-			<p class="text-center text-xl text-gray-500">
-				目前還沒有文章... 趕快去寫一篇吧！
-			</p>
+			<p class="text-center text-xl text-gray-500">目前還沒有文章... 趕快去寫一篇吧！</p>
 		{/if}
 	</div>
 </div>
