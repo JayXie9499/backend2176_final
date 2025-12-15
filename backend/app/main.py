@@ -2,13 +2,12 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from . import models
-from .schemas import Config
+from .config import config
 from .database import engine
 from .routes import auth_router, posts_router
 
 models.Base.metadata.create_all(bind=engine)
 
-config = Config()  # type: ignore
 app = FastAPI(docs_url=None, redoc_url=None)
 app.add_middleware(
 	CORSMiddleware,

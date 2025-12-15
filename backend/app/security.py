@@ -1,6 +1,6 @@
 import bcrypt
 from jose import jwt
-from .main import config
+from .config import config
 
 
 def hash_password(password: str):
