@@ -20,11 +20,11 @@
 
 		isLoading = true;
 		isLoading = false;
-		//模擬登陸
-		$user = { username: username };
+		const res = await api.auth.login({ username, password });
+		$user = res.data;
 		isLoading = false;
 		isNavigating = true;
-		goto('/'); // 轉導回首頁
+		goto('/');
 	}
 </script>
 
@@ -148,8 +148,8 @@
 					type="submit"
 					disabled={isLoading}
 					class="mt-2 flex w-full items-center justify-center rounded-lg bg-blue-600 px-4 py-2.5 text-base font-bold text-white shadow-md shadow-blue-500/20 transition-all
-                           hover:bg-blue-700 hover:shadow-lg focus:ring-4 focus:ring-blue-500/50 focus:outline-none
-                           disabled:cursor-not-allowed disabled:opacity-70"
+					hover:bg-blue-700 hover:shadow-lg focus:ring-4 focus:ring-blue-500/50 focus:outline-none
+					disabled:cursor-not-allowed disabled:opacity-70"
 				>
 					{#if isLoading}
 						<svg
