@@ -40,6 +40,9 @@ export const api = {
 			send<void>('POST', '/auth/register', data),
 		login: (data: { username: string; password: string }) => send<User>('POST', '/auth/login', data)
 	},
+	user: {
+		me: () => send<User>('GET', '/user/me')
+	},
 	posts: {
 		list: (page: number) => send<Post[]>('GET', `/posts?page=${page}`),
 		create: (data: Omit<Post, 'id' | 'created_at'>) => send<Post>('POST', '/posts', data),
