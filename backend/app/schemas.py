@@ -7,3 +7,12 @@ class UserBase(BaseModel):
 
 class UserCreate(UserBase):
 	password: str = Field(..., min_length=6, max_length=50)
+
+
+class PostBase(BaseModel):
+	title: str
+	content: str
+
+
+class PostCreate(PostBase):
+	owner_id: int = Field(..., gt=0)

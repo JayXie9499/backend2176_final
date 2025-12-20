@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
+from ..schemas import PostCreate
 from ..database import get_db
 from ..models import User, Post
 
@@ -18,3 +19,12 @@ async def get_posts(page: int = 0, db: Session = Depends(get_db)):
 	)
 
 	return {"message": "Successfully fetched posts data", "data": posts}
+
+
+@router.post("/")
+async def create_post(data: PostCreate, db: Session = Depends(get_db)):
+	post = Post(**data.model_dump())
+	db.add(post)
+	db.commit()
+	db.refresh(post)
+	return {"message": "Post created successfully", "data": post}
