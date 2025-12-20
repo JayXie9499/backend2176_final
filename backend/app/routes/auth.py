@@ -21,12 +21,7 @@ async def user_register(
 		return {"message": "Username already taken"}
 
 	hashed_pwd = hash_password(password)
-	db_user = User(name=username, hashed_pwd=hashed_pwd)
-	db.add(db_user)
+	db.add(User(name=username, hashed_pwd=hashed_pwd))
 	db.commit()
-	db.refresh(db_user)
 
-	return {
-		"message": "Successfully registered",
-		"data": {"id": db_user.id, "username": db_user.name},
-	}
+	return {"message": "Successfully registered"}
