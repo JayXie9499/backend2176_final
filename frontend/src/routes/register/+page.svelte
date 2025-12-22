@@ -27,8 +27,9 @@
 			isLoading = true;
 
 			await api.auth.register({ username, password });
-			goto('/login');
-		} catch (e) {
+			await goto('/login');
+		} catch (err) {
+			console.error(err);
 			errorMessage = '註冊失敗，請稍後再試';
 		} finally {
 			isLoading = false;
