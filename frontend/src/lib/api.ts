@@ -46,7 +46,7 @@ export const api = {
 		me: () => send<User>('GET', '/user/me')
 	},
 	posts: {
-		list: (page: number) => send<Post[]>('GET', `/posts?page=${page}`),
+		list: (page: number) => send<Post[]>('GET', `/posts/?page=${page}`),
 		create: (data: Omit<Post, 'id' | 'created_at'>) => send<Post>('POST', '/posts', data),
 		edit: (id: number, data: Partial<Omit<Post, 'id' | 'created_at'>>) =>
 			send<Post>('PUT', `/posts/${id}`, data),

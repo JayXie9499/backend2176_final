@@ -13,7 +13,7 @@
 	let errorMessage = $state('');
 
 	let passwordMismatch = $derived(confirmPassword !== '' && password !== confirmPassword);
-	let isFormValid = $derived(username.length > 0 && password.length >= 8 && !passwordMismatch);
+	let isFormValid = $derived(username.length > 0 && password.length >= 4 && !passwordMismatch);
 
 	async function handleSubmit(e: Event) {
 		e.preventDefault();
