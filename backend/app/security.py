@@ -13,3 +13,10 @@ def verify_jwt_token(token: str):
 		return payload
 	except:
 		return None
+def verify_password(password: str,hash: str):
+	return bcrypt.checkpw(password,hash)
+def generate_jwt_token(data:dict):
+	try:
+		return jwt.encode(data,config.JWT_SECRET,algorithm='HS256')
+	except:
+		return None
