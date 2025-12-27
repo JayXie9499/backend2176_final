@@ -11,7 +11,8 @@ def verify_jwt_token(token: str):
 	try:
 		payload = jwt.decode(token, config.JWT_SECRET, algorithms=["HS256"])
 		return payload
-	except:
+	except Exception as e:
+		print(e)
 		return None
 
 
@@ -24,5 +25,6 @@ def verify_password(password: str, hash: str):
 def generate_jwt_token(data: dict):
 	try:
 		return jwt.encode(data, config.JWT_SECRET, algorithm="HS256")
-	except:
+	except Exception as e:
+		print(e)
 		return None
